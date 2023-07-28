@@ -1,47 +1,36 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable prettier/prettier */
-import React, { useState } from 'react'
-import { CCard, CCardBody, CCol, CCardHeader, CRow } from '@coreui/react'
-import {
-  CChartBar,
-  CChartDoughnut,
-  CChartLine,
-  CChartPie,
-  CChartPolarArea,
-  CChartRadar,
-} from '@coreui/react-chartjs'
-import { DocsCallout } from 'src/components'
-import { Button, Space, Table } from 'antd';
-import CategoryInsert from './CategoryInsert';
-
+import React, { useEffect, useState } from 'react'
+import { Button, Space, Table } from 'antd'
+import CategoryInsert from './CategoryInsert'
 const Category = () => {
-  const random = () => Math.round(Math.random() * 100)
+  // const random = () => Math.round(Math.random() * 100)
 
-const dataSource = [
-  {
-    key: '1',
-    name: 'John Brown',
-    age: 32,
-    address: 'New York',
-  },
-  {
-    key: '2',
-    name: 'Jim Green',
-    age: 42,
-    address: 'London',
-  },
-  {
-    key: '3',
-    name: 'Joe Black',
-    age: 32,
-    address: 'Sidney',
-  },
-];
+const [dataSource, setDataSource] = useState([]);
+
+const url_category_all = "http://localhost:8080/api/category/findAll"
+useEffect(() => {
+  fetch(url_category_all, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    }})
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      return response.json();
+    })
+    .then(jsonData => ()=>{console.log(jsonData.data)})
+    .catch(error => console.log('There was an error: ', error));
+
+}, []);
 
 const columns = [
   {
-    title: 'STT',
-    dataIndex: 'key',
-    key: 'key',
+    title: 'ID',
+    dataIndex: 'id',
+    key: 'id',
   },
   {
     title: 'Name',
@@ -49,9 +38,24 @@ const columns = [
     key: 'age',
   },
   {
-    title: 'Description',
+    title: 'Code',
     dataIndex: 'address',
     key: 'address',
+  },
+  {
+    title: 'Description',
+    dataIndex: 'desc',
+    key: 'desc',
+  },
+  {
+    title: 'Active',
+    dataIndex: 'active',
+    key: 'active',
+  },
+  {
+    title: 'CreateDate',
+    dataIndex: 'createDate',
+    key: 'createDate',
   },
   {
     title: 'Action',
@@ -105,4 +109,4 @@ const [isModalVisible, setIsModalVisible] = useState(false);
   )
 }
 
-export default Category
+export default Category;
