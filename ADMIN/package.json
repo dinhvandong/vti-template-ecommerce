@@ -3,7 +3,6 @@
   "version": "4.5.0",
   "description": "CoreUI Free React Admin Template",
   "proxy": "http://localhost:8080",
-
   "homepage": ".",
   "bugs": {
     "url": "https://github.com/coreui/coreui-free-react-admin-template/issues"
@@ -43,7 +42,8 @@
     "react-redux": "^8.1.1",
     "react-router-dom": "^6.14.0",
     "redux": "4.2.1",
-    "simplebar-react": "^2.4.3"
+    "simplebar-react": "^2.4.3",
+    "zustand": "^4.4.0"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.16.5",
