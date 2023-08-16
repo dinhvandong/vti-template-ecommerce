@@ -45,6 +45,7 @@ public class CategoryController {
     }
 
     @PostMapping("/findAll")
+
     public ResponseEntity<?> findAll() {
 
         return ResponseEntity.status(HttpStatus.OK).body(

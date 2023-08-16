@@ -76,7 +76,8 @@ public class WebSecurityConfig {
                 .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
                 .authorizeRequests().
-                requestMatchers("/api/auth/**", "/oauth/authorize**", "/login**", "/error**","/api/FileUpload/files/**").permitAll()
+                requestMatchers("/api/auth/**", "/oauth/authorize**",
+                        "/login**", "/error**","/api/FileUpload/files/**").permitAll()
                 .requestMatchers(h2ConsolePath + "/**").permitAll()
                 .anyRequest().authenticated();
         http.headers().frameOptions().sameOrigin();
