@@ -37,20 +37,26 @@ public class Database {
 
                 Role role2 = new Role();
                 role2.setId(2);
-                role2.setName(ERole.ROLE_MODERATOR);
+                role2.setName(ERole.ROLE_MANAGER);
 
                 Role role3 = new Role();
                 role3.setId(3);
-                role3.setName(ERole.ROLE_AH);
+                role3.setName(ERole.ROLE_RECEIPT);
 
                 Role role4 = new Role();
                 role4.setId(4);
-                role4.setName(ERole.ROLE_TEACHER);
+                role4.setName(ERole.ROLE_SALE);
+
+                Role role5 = new Role();
+                role5.setId(5);
+                role5.setName(ERole.ROLE_CLIENT);
                 if(roleRepository.findAll().size()==0){
                     roleRepository.save(role1);
                     roleRepository.save(role2);
                     roleRepository.save(role3);
                     roleRepository.save(role4);
+                    roleRepository.save(role5);
+
                 }
 
             // Generate user super admin
